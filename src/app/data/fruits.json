@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Watermelon",
+        "weight": 1,
+        "unit": "KG",
+        "price": "30",
+        "currency": "EGP",
+        "img" : "/fruit3"
+    },
+    {
+        "name": "Kiwi",
+        "weight": 1,
+        "unit": "KG",
+        "price": "30",
+        "currency": "EGP",
+        "img" : "/fruit4"
+    },
+    {
+        "name": "Apples",
+        "weight": 1,
+        "unit": "KG",
+        "price": "30",
+        "currency": "EGP",
+        "img" : "/fruit1"
+    },
+    {
+        "name": "Mango",
+        "weight": 1,
+        "unit": "KG",
+        "price": "30",
+        "currency": "EGP",
+        "img" : "/fruit2"
+    }
+]
