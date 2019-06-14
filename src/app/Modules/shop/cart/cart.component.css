@@ -1,0 +1,18 @@
+.menu-title .trash{
+    float: right;
+}
+
+.menu-card .fruit-number{
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: linear-gradient(318deg, #00C7B8,#00A0C3);
+}

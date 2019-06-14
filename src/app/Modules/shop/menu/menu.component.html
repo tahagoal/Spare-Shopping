@@ -1,11 +1,11 @@
 <div class="menu-body">
     <div class="menu-title">
         <p>Menu</p>
-        <div class="plus">+</div>
+        <div class="plus" (click) = "openpop()">+</div>
     </div>
 
     <div class="menu-list">
-        <div class="menu-card" [ngClass]="{'selected': shoppingcart.fruits.includes(fruit)}" *ngFor="let fruit of fruitlist">
+        <div class="menu-card" [ngClass]="{'selected': getfruitNumber(fruit) > 0}" *ngFor="let fruit of fruitlist">
             <div class="fruit-image">
                 <img src="/assets/imgs{{fruit.getImg()}}.png">
             </div>
@@ -25,12 +25,44 @@
     </div>
 
     <div class="action-btns" *ngIf="shoppingcart.fruits.length > 0">
-        <button class="addcart">
+        <button class="addcart" routerLink="/shopping/cart">
             <img src="/assets/imgs/Cart.svg">
             <span>{{shoppingcart.fruits.length}}</span>
         </button>
         <button class="pay">
             Pay <span>{{shoppingcart.price}}</span> EGP
         </button>
+    </div>
+</div>
+
+<div class="add-popup" [ngClass]="{'blind': popupblind}">
+    <div class="body">
+        <div class="title">
+            <span class="close" (click)="closepop()">X</span>
+            <span class="add-title">Add item</span>
+        </div>
+        <div class="photo">
+            <div class="center paddingt70">
+                <img class="center" src="/assets/imgs/component.png">
+                <p>TAB TO ADD PHOTO</p>
+            </div>
+        </div>
+        <div class="form" action="#">
+            <form>
+                <label>Product Name</label>
+                <input name ="pname" type="text" [(ngModel)] = "form.name">
+
+                <label>Price</label>
+                <input name ="pprice" type="number" [(ngModel)] = "form.price">
+
+                <label>Serving Size</label>
+                <input name ="psize" type="text" [(ngModel)] = "form.size">
+
+                <label>Inventory Left</label>
+                <input name ="pleft" type="number" [(ngModel)] = "form.left">
+
+                <button class="save" (click) = "saveproduct()">Save</button>
+            </form>
+        </div>
     </div>
 </div>

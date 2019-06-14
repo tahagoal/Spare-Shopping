@@ -1,3 +1,38 @@
-<p>
-  cart works!
-</p>
+<div class="menu-body">
+    <div class="menu-title">
+        <p>Cart</p>
+        <div class="trash">
+          <img src="/assets/imgs/Trash.svg" (click)="deleteall()">
+        </div>
+    </div>
+
+    <div class="menu-list">
+        <div class="menu-card" *ngFor="let fruit of shoppingcart.fruits">
+            <div class="fruit-image">
+                <img src="/assets/imgs{{fruit.type.img}}.png">
+            </div>
+            <div class="fruit-details">
+                <p class="fruit-name">{{fruit.type.name}}</p>
+                <p class="fruit-weight">{{fruit.type.weight}}{{fruit.type.unit}}</p>
+                <p class="fruit-price">{{fruit.type.price}}{{fruit.type.currency}}</p>
+            </div>
+            <div class="fruit-actions">
+                <div class="add" (click)="addfruit(fruit.type)">+</div>
+                <div class="minus" (click) = "minusfruit(fruit.type)">-</div>
+            </div>
+            <div class="fruit-number">
+                {{fruit.number}}
+            </div>
+        </div>
+    </div>
+
+    <div class="action-btns" >
+        <button class="addcart" routerLink="/shopping/menu">
+            Back
+        </button>
+        <button class="pay">
+            Pay <span>{{shoppingcart.price}}</span> EGP
+        </button>
+    </div>
+
+</div>

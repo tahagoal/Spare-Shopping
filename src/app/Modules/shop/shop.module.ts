@@ -6,6 +6,7 @@ import { CartComponent } from '../../Modules/shop/cart/cart.component';
 import { NavbarComponent } from '../../shared/navbar/navbar.component'
 import { Routes, RouterModule } from '@angular/router';
 import { ShopResolver } from 'src/app/Resolvers/shop.resolver';
+import { FormsModule } from '@angular/forms';
 
 const ShopRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const ShopRoutes: Routes = [
         path: 'menu',
         component: MenuComponent,
         resolve: { fruits:  ShopResolver}
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
       }
     ]
   }
@@ -32,6 +37,7 @@ const ShopRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ShopRoutes),
+    FormsModule
   ],
   providers: [ShopResolver]
 })
