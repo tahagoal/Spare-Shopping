@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShopComponent } from '../../Modules/shop/shop.component';
 import { MenuComponent } from '../../Modules/shop/menu/menu.component';
 import { CartComponent } from '../../Modules/shop/cart/cart.component';
+import { NavbarComponent } from '../../shared/navbar/navbar.component'
 import { Routes, RouterModule } from '@angular/router';
 import { ShopResolver } from 'src/app/Resolvers/shop.resolver';
 
@@ -27,7 +28,7 @@ const ShopRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [ShopComponent, MenuComponent, CartComponent],
+  declarations: [NavbarComponent, ShopComponent, MenuComponent, CartComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(ShopRoutes),

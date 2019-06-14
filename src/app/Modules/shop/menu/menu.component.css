@@ -1,0 +1,162 @@
+.menu-body{
+    padding-top:17px;
+    padding-right: 17px;
+    padding-left: 17px;
+}
+
+.menu-body *{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.menu-body .menu-title{
+    border-bottom: 1px solid #707070;
+    height: 32px;
+}
+
+.menu-body .menu-title p{
+    font-size: 18px;
+    float: left;
+    margin: 0px;
+}
+
+.menu-body .menu-title .plus{
+    float: right;
+    font-size: 35px;
+    color: #383838;
+    line-height: 28px;
+}
+
+.menu-body .menu-list{
+    margin-top: 4.5px;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.menu-body .menu-list .menu-card{
+    min-height: 114px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.menu-card .fruit-image{
+    width: 40%;
+    display: -webkit-inline-box;
+}
+
+.menu-card .fruit-image img{
+    width: 148px;
+}
+
+.menu-card .fruit-details{
+    width: 40%;
+    position: relative;
+}
+
+.menu-card .fruit-actions{
+    width: 20%;
+}
+
+.menu-card .fruit-actions .add{
+    color: #383838;
+    font-size: 40px;
+    text-align: right;
+    padding-right: 15px;
+    border-bottom: 1px solid #383838;
+    cursor: pointer;
+}
+
+.menu-card .fruit-actions .minus{
+    color: #383838;
+    font-size: 40px;
+    text-align: right;
+    padding-right: 19px;
+    cursor: pointer;
+}
+
+.menu-card .fruit-details p{
+    margin: 0px;
+}
+
+.menu-card .fruit-details .fruit-name{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.menu-card .fruit-details .fruit-weight{
+    font-size: 15px;
+}
+
+.menu-card .fruit-details .fruit-price{
+    position: absolute;
+    bottom: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #1CB4BC;
+}
+
+.menu-card.selected{
+    border: 2px solid #1CB4BC;
+    box-sizing: border-box;
+}
+
+.menu-card .fruit-number{
+    display: none;
+}
+
+.menu-card.selected .fruit-number{
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: linear-gradient(318deg, #00C7B8,#00A0C3);
+}
+
+.action-btns{
+    margin-top: 8px;
+}
+
+.action-btns .pay{
+    margin-left: 13px;
+}
+
+.action-btns button{
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.16);
+    border: none;
+    border-radius: 26px;
+}
+
+.action-btns .addcart{
+    background: #383838;
+    color: white;
+    font-size: 23px;
+    padding: 10px 35px;
+    font-weight: bold;
+}
+
+.action-btns .pay{
+    background: linear-gradient(90deg, #00A0C3,#00C7B8);
+    color: white;
+    font-size: 20px;
+    padding: 12px 35px;
+    font-weight: bold;
+}
+
+.action-btns .addcart img{
+    vertical-align: middle;
+}
+
+.action-btns .addcart span{
+    padding-left: 19px;
+}

@@ -1,0 +1,36 @@
+<div class="menu-body">
+    <div class="menu-title">
+        <p>Menu</p>
+        <div class="plus">+</div>
+    </div>
+
+    <div class="menu-list">
+        <div class="menu-card" [ngClass]="{'selected': shoppingcart.fruits.includes(fruit)}" *ngFor="let fruit of fruitlist">
+            <div class="fruit-image">
+                <img src="/assets/imgs{{fruit.getImg()}}.png">
+            </div>
+            <div class="fruit-details">
+                <p class="fruit-name">{{fruit.getName()}}</p>
+                <p class="fruit-weight">{{fruit.getWeight()}}{{fruit.getUnit()}}</p>
+                <p class="fruit-price">{{fruit.getPrice()}}{{fruit.getCurr()}}</p>
+            </div>
+            <div class="fruit-actions">
+                <div class="add" (click)="addfruit(fruit)">+</div>
+                <div class="minus" (click) = "minusfruit(fruit)">-</div>
+            </div>
+            <div class="fruit-number">
+                {{getfruitNumber(fruit)}}
+            </div>
+        </div>
+    </div>
+
+    <div class="action-btns" *ngIf="shoppingcart.fruits.length > 0">
+        <button class="addcart">
+            <img src="/assets/imgs/Cart.svg">
+            <span>{{shoppingcart.fruits.length}}</span>
+        </button>
+        <button class="pay">
+            Pay <span>{{shoppingcart.price}}</span> EGP
+        </button>
+    </div>
+</div>
