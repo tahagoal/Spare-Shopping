@@ -11,8 +11,8 @@
             </div>
             <div class="fruit-details">
                 <p class="fruit-name">{{fruit.getName()}}</p>
-                <p class="fruit-weight">{{fruit.getWeight()}}{{fruit.getUnit()}}</p>
-                <p class="fruit-price">{{fruit.getPrice()}}{{fruit.getCurr()}}</p>
+                <p class="fruit-weight">{{fruit.getWeight()}}</p>
+                <p class="fruit-price">{{fruit.getPrice()}} {{fruit.getCurr()}}</p>
             </div>
             <div class="fruit-actions">
                 <div class="add" (click)="addfruit(fruit)">+</div>
@@ -47,22 +47,38 @@
                 <p>TAB TO ADD PHOTO</p>
             </div>
         </div>
-        <div class="form" action="#">
-            <form>
+        <div class="form">
+            <form novalidate [formGroup]="form" action="#">
                 <label>Product Name</label>
-                <input name ="pname" type="text" [(ngModel)] = "form.name">
+                <input formControlName="name" type="text">
+                <div *ngIf="f.name.errors" class="invalid-feedback">
+                    <div>Product name should contain only characters</div>
+                </div>
 
                 <label>Price</label>
-                <input name ="pprice" type="number" [(ngModel)] = "form.price">
+                <input formControlName="price" type="number">
+                <div *ngIf="f.price.errors" class="invalid-feedback">
+                    <div>Price should contain only numbers</div>
+                </div>
 
                 <label>Serving Size</label>
-                <input name ="psize" type="text" [(ngModel)] = "form.size">
+                <input formControlName="size" type="text">
+                <div *ngIf="f.size.errors" class="invalid-feedback">
+                    <div>Price should contain only Char and digits</div>
+                </div>
 
                 <label>Inventory Left</label>
-                <input name ="pleft" type="number" [(ngModel)] = "form.left">
+                <input formControlName="left" type="number">
+                <div *ngIf="f.left.errors" class="invalid-feedback">
+                    <div>Left should contain only numbers</div>
+                </div>
 
                 <button class="save" (click) = "saveproduct()">Save</button>
             </form>
         </div>
     </div>
+</div>
+
+<div class="loader" *ngIf="loadingshow">
+    <img class="center" src="/assets/imgs/Spinner.svg">
 </div>

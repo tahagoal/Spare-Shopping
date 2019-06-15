@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Fruit } from 'src/app/Models/fruit';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -14,13 +15,9 @@ export class MenuComponent implements OnInit {
     price: 0,
     fruits: []
   };
-  form = {
-    name: '',
-    price: 0,
-    size: '',
-    left: 0,
-  }
+  form;
   popupblind:boolean = true;
+  loadingshow:boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +25,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.fruitlist = this.route.snapshot.data.fruits;
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.pattern('[a-zA-Z ]*')),
+      price: new FormControl('', Validators.pattern('[0-9]*')),
+      size: new FormControl('', Validators.pattern('[A-Za-z0-9 ]*')),
+      left: new FormControl('', Validators.pattern('[0-9]*'))
+    });
   }
 
   addfruit(fruit) {
@@ -40,14 +43,20 @@ export class MenuComponent implements OnInit {
       }
     }
     if (!addflag) {
-      let fruitObj = new Fruit(fruit.name, fruit.weight, fruit.unit, fruit.price, fruit.currency, fruit.img);
+      fruit.left -- ;
+      let fruitObj = new Fruit(fruit.name, fruit.weight, fruit.price, fruit.currency, fruit.img, fruit.left);
       let fruitWithNumber = {type: fruitObj, number: 1};
       this.shoppingcart.fruits.push(fruitWithNumber);
+      this.shoppingcart.price += parseInt(fruit.getPrice());
     }
-    else{
+    else if(fruit.left>0){
+      fruit.left -- ;
       this.shoppingcart.fruits[counter].number ++;
+      this.shoppingcart.price += parseInt(fruit.getPrice());
     }
-    this.shoppingcart.price += parseInt(fruit.getPrice());
+    else if(fruit.left == 0){
+      alert("not enough of this item left");
+    }
     localStorage.setItem('shoppingcart', JSON.stringify(this.shoppingcart));
   }
 
@@ -63,10 +72,12 @@ export class MenuComponent implements OnInit {
     }
 
     if(minusflag && this.shoppingcart.fruits[counter].number == 1){
+      fruit.left ++;
       this.shoppingcart.fruits.splice(counter, 1);     
       this.shoppingcart.price -= parseInt(fruit.getPrice());
     }
     else if(minusflag && this.shoppingcart.fruits[counter].number > 1){
+      fruit.left ++;
       this.shoppingcart.fruits[counter].number --;
       this.shoppingcart.price -= parseInt(fruit.getPrice());
     }
@@ -89,8 +100,24 @@ export class MenuComponent implements OnInit {
     this.popupblind = true;
   }
 
+  get f() { return this.form.controls; }
+
   saveproduct(){
-    console.log(this.form);
+    if (this.form.invalid) {
+      console.log(this.form);
+      
+      alert("something wrong");
+    }
+    else{
+      this.loadingshow = true;
+      let newfruit = new Fruit(this.form.controls.name.value, this.form.controls.size.value, this.form.controls.price.value, 'EGP',
+        '/fruit3', this.form.controls.left.value);
+        this.fruitlist.push(newfruit);
+        this.closepop();
+        setTimeout(() => {
+          this.loadingshow = false;
+        }, 500);
+    }
   }
 
 }

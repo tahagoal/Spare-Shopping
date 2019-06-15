@@ -20,10 +20,10 @@ export class ShopService {
           return new Fruit(
             item.name,
             item.weight,
-            item.unit,
             item.price,
             item.currency,
-            item.img
+            item.img,
+            item.left
             ) 
         })
         return results;

@@ -94,3 +94,20 @@
 .blind{
     display: none;
 }
+
+.loader{
+    position: absolute;
+    height: 100vh;
+    width:100vw;
+    background: rgba(255,255,255, 0.81);
+    top: 0px;
+}
+
+.loader img{
+    padding-top: 50%;
+}
+
+.invalid-feedback div{
+    color: red;
+    font-size: 11px;
+}

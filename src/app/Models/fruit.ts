@@ -1,18 +1,18 @@
 export class Fruit {
     name: String;
-    weight: Number;
-    unit: String;
+    weight: String;
     price: Number;
     currency: String;
     img: String;
+    left: Number;
 
-    constructor(name, weight, unit, price, currency, img){
+    constructor(name, weight, price, currency, img, left){
         this.name = name;
         this.weight = weight;
-        this.unit = unit;
         this.price = price;
         this.currency = currency;
         this.img = img;
+        this.left = left;
     }
 
     getName(){
@@ -21,10 +21,6 @@ export class Fruit {
 
     getWeight(){
         return this.weight;
-    }
-
-    getUnit(){
-        return this.unit;
     }
 
     getPrice(){
@@ -37,5 +33,9 @@ export class Fruit {
 
     getImg(){
         return this.img;
+    }
+
+    getLeft(){
+        return this.left;
     }
 }

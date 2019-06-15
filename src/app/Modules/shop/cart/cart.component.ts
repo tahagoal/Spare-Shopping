@@ -22,12 +22,17 @@ export class CartComponent implements OnInit {
 
   addfruit(fruittype){
     let fruit_selected:any;
+    if(fruittype.left == 0){
+      alert("not enough of this item left");
+      return;
+    }
     for(var i=0; i< this.shoppingcart.fruits.length; i ++){
       if(this.shoppingcart.fruits[i].type.name == fruittype.name){
         this.shoppingcart.fruits[i].number ++;
         fruit_selected = this.shoppingcart.fruits[i].type;
       }
     }
+    fruittype.left --;
     this.shoppingcart.price += parseInt(fruit_selected.price);
   }
 
@@ -39,6 +44,7 @@ export class CartComponent implements OnInit {
 
       if(this.shoppingcart.fruits[i].type.name == fruittype.name){
         this.shoppingcart.fruits[i].number --;
+        fruittype.left ++;
         fruit_selected = this.shoppingcart.fruits[i].type;
       }
     }
