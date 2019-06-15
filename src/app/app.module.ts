@@ -16,6 +16,11 @@ const appRoutes: Routes = [
     redirectTo: 'shopping',
     pathMatch: 'full',
   },
+  {
+    path : '**',
+    redirectTo: 'shopping',
+    pathMatch: 'full',
+  },
 ];
 
 
